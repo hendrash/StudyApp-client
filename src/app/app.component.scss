@@ -1,0 +1,25 @@
+
+th.myTable 
+{
+    padding-left: 1em;
+    padding-right: 1em;
+    background-color: gray;
+    color: white;
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  tr:hover{
+      background-color: yellow;
+  }
+  span.action{
+  padding: 1em;
+}
+
+  span.action:hover{
+     font-weight: bolder;
+      color: red;
+  }
+

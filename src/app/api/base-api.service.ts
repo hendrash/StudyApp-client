@@ -7,8 +7,8 @@ import {HttpClient} from '@angular/common/http'
 })
 export class BaseApi{
     protected basesUrl: string;
-    protected baseApiPath='/api'
+
     constructor(protected httpClient: HttpClient){
-        this.basesUrl="http://localhost:8080"+this.baseApiPath;
+        this.basesUrl="http://localhost:8080/api";
     }
 }
