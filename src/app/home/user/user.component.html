@@ -27,9 +27,7 @@
     <ng-container matColumnDef="edit">
         <th mat-header-cell  *matHeaderCellDef class="myTable" > Actions </th>
         <td mat-cell *matCellDef="let element" >
-            <a [routerLink]="['/test']" routerLinkActive="router-link-active" > 
-                <span class="action" (click)="open(element.userId)">Open</span></a>
-           
+            <span class="action" (click)="open(element.userId)">Open</span>
             <span class="action" (click)="edit(element.userId)">Edit</span>
             <span class="action" (click)="remove(element.userId)">Remove</span>
         </td>
@@ -39,5 +37,4 @@
 </table>
 <button type="button" (click)="create()" >add user</button>
 </body>
-<router-outlet></router-outlet>
 

@@ -4,22 +4,28 @@ import { MatTableModule } from '@angular/material/table'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { CreateComponent } from './user/create/create.component';
+import { EditUser } from './user/editUser/editUser.component';
 import { TestListComponent } from './test/testList/testList.component';
 import { UserComponent } from './home/user/user.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { EditTestComponent } from './test/edit-test/edit-test.component';
+import { QuestionsComponent } from './question/questions/questions.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateComponent,
+    EditUser,
     TestListComponent,
-    UserComponent
+    UserComponent,
+    EditTestComponent,
+    QuestionsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    MatTableModule 
+    MatTableModule ,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

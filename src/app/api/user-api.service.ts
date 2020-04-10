@@ -15,4 +15,11 @@ export class UserApi extends BaseApi{
     public delete(userId: number): any{
         return this.httpClient.delete<any>(`${this.basesUrl}/user/delete?userId=${userId}`);
     }
+
+    public edit(userDto: UserDto){
+        return this.httpClient.put<UserDto>(`${this.basesUrl}/user/update`, userDto);
+    }
+    public create(userDto: UserDto){
+        return this.httpClient.post<any>(`${this.basesUrl}/user`, userDto);
+    }
 }

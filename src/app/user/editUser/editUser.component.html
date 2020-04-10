@@ -1,0 +1,10 @@
+<div class="box">
+    <header class="center">{{mode}} User</header>
+    <p>user name</p><input type="text" placeholder="user name" required [formControl]="uname">
+    <p>first name</p><input type="text" placeholder="fisrt name" required [formControl]="fname">
+    <p>last name</p> <input type="text" placeholder="last name" required [formControl]="lname">
+    <p>email</p> <input type="email" placeholder="email" required [formControl]="email">
+    <p>password</p> <input type="password" placeholder="password" required [formControl]="password">
+    <br> <br> <br>
+    <button (click)="save()">Save</button>
+</div>
