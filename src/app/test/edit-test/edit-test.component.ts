@@ -33,15 +33,19 @@ private indexOfTest: number;
       this.userId=parms.userId;
  
   
-    }); 
-    this.processForm();
+    });
+    
+    
     this.testHelper.loadTests(this.userId);
     this.createTestForm();
-    if(this.router.url.indexOf('/add')){
-      this.mode='Edit';
+    if(this.router.url.indexOf('/add')>0){
+        this.mode='Add';
     }
-    if(this.router.url.indexOf('/edit')){
-      this.mode='Add';
+    if(this.router.url.indexOf('/edit')>0){
+        this.mode='Edit';    
+    }
+    if(this.mode==='Edit'){
+      this.processForm();
     }
   }
   private processForm(){
@@ -82,7 +86,7 @@ private indexOfTest: number;
       )
     }
   }
-  public initForm(){
+  private initForm(){
     this.tname.setValue(this.currentTest.testName);
   }
 }

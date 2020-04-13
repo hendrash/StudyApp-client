@@ -19,6 +19,7 @@ export class TestListComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(parms=>(this.userId=parms.userId));
+    
     this.getTest();
   }
   getTest(){
