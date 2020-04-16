@@ -51,7 +51,7 @@ export class EditQuestionsComponent implements OnInit {
   
 processForm(){
    this.questionApi.getQuestion(this.questionId).subscribe(t=>{
-     this.currentQuestion=t;
+    this.currentQuestion=t;
      this.initForm();
    })
 }
@@ -72,20 +72,27 @@ createQuestionForm(){
  
 }
 save(){
-this.currentQuestion ={
+let currentQuestion :QuestionDto={
   question: this.question.value,
   hint: this.hint.value,
   answer: this.pAnswer.value,
-  testId: this.testId
-  
+  testId: this.testId,
+  questionId: this.currentQuestion.questionId 
 }
+
 if(this.mode==='Add'){
-  this.questionApi.create(this.currentQuestion).subscribe((result)=>{
+  this.questionApi.create(currentQuestion).subscribe((result)=>{
     this.questionHelper.loadQuestions(this.testId);
   });
 }
 if(this.mode==='Edit'){
-
+  this.currentQuestion.answer.forEach((q, i)=>{
+      currentQuestion.answer[i].answerId=q.answerId;
+    })
+  this.questionApi.edit(currentQuestion).subscribe((result)=>{
+    
+    this.questionHelper.loadQuestions(this.testId);
+  });
 }
 this.router.navigate(['test/'+this.userId+'/questions/'+this.testId]);
 }
@@ -147,4 +154,3 @@ remove(){
 
 
 }
-
