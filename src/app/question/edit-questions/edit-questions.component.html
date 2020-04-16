@@ -11,9 +11,7 @@
             <h3 class="form-header pr-0">
                 <button (click)="addAnswer()">Add Answer</button>            
             </h3> 
-            <h3 class="form-header pr-0">
-                <button (click)="remove()" >Remove</button>
-            </h3>
+           
             <div class="row w-100 d-flex justify-content-center align-items-center"
             *ngFor="let prop of pAnswer.controls; let i = index"
             [formGroupName]="i" 
@@ -25,7 +23,10 @@
              required 
              formControlName="answer"/>
         <textarea name="reason " formControlName="description" placeholder="Why is this answer correct" row=4 cols="10" ></textarea>
-            <mat-checkbox formControlName="correct">Correct?</mat-checkbox>
+            <mat-checkbox formControlName="correct">Correct?</mat-checkbox> 
+            <h3 class="form-header pr-0">
+                <button (click)="remove(i)" >-</button>
+            </h3>
         </div>
         </div>
         </div>

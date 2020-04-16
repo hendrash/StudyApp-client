@@ -6,6 +6,7 @@ import { QuestionApi } from 'src/app/api/question-api.service';
 import { QuestionHelper } from 'src/app/service/questionHelper';
 import { AnswersComponent } from 'src/app/answers/answers.component';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { AnswerApi } from 'src/app/api/answer-api.service';
 
 @Component({
   selector: 'app-edit-questions',
@@ -27,7 +28,8 @@ export class EditQuestionsComponent implements OnInit {
     private router: Router,
     private questionApi: QuestionApi,
     private route: ActivatedRoute,
-    private questionHelper: QuestionHelper) {
+    private questionHelper: QuestionHelper,
+    private answerApi: AnswerApi) {
   }
 
   ngOnInit(): void {
@@ -77,7 +79,8 @@ let currentQuestion :QuestionDto={
   hint: this.hint.value,
   answer: this.pAnswer.value,
   testId: this.testId,
-  questionId: this.currentQuestion.questionId 
+  questionId: null
+
 }
 
 if(this.mode==='Add'){
@@ -86,7 +89,8 @@ if(this.mode==='Add'){
   });
 }
 if(this.mode==='Edit'){
-  this.currentQuestion.answer.forEach((q, i)=>{
+   currentQuestion.questionId= this.currentQuestion.questionId; 
+  this.currentQuestion.answer.forEach((q, i)=>{    
       currentQuestion.answer[i].answerId=q.answerId;
     })
   this.questionApi.edit(currentQuestion).subscribe((result)=>{
@@ -94,6 +98,7 @@ if(this.mode==='Edit'){
     this.questionHelper.loadQuestions(this.testId);
   });
 }
+
 this.router.navigate(['test/'+this.userId+'/questions/'+this.testId]);
 }
 
@@ -146,10 +151,16 @@ addAnswer(){
   })
   this.pAnswer.push(prop);
 }
-remove(){
-  if(this.mode==="Add")
-  if(this.pAnswer.length>0)
-  this.pAnswer.removeAt(this.pAnswer.length-1)
+remove(index: number){
+  this.pAnswer.removeAt(index);
+  if(this.currentQuestion.answer[index]){
+    this.answerApi.delete(this.currentQuestion.answer[index].answerId).subscribe(t=>{
+      this.currentQuestion.answer=this.currentQuestion.answer.filter(t=>t.answerId!=this.currentQuestion.answer[index].answerId);
+      this.questionHelper.loadQuestions(this.testId);
+    });
+    
+   }
+
 }
 
 

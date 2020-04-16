@@ -14,13 +14,13 @@ export class AnswerApi extends BaseApi{
         payload= payload.append('questionId', questionId.toString());
         return this.httpClient.get<AnswerDto[]>(`${this.basesUrl}/answer/getAll`, {params: payload});
     }
-    public delete(questionId: number): any{
-        return this.httpClient.delete<any>(`${this.basesUrl}/answer/delete?questionId=${questionId}`);
+    public delete(answerId: number): any{
+        return this.httpClient.delete<any>(`${this.basesUrl}/answer/delete?answerId=${answerId}`);
     }
-    public edit(questionDto: QuestionDto){
-        return this.httpClient.put<QuestionDto>(`${this.basesUrl}/question/update`, questionDto);
+    public edit(questionDto: AnswerDto){
+        return this.httpClient.put<AnswerDto>(`${this.basesUrl}/answer/update`, questionDto);
     }
-    public create(qusetionDto: QuestionDto){
-        return this.httpClient.post<any>(`${this.basesUrl}/question`,qusetionDto);
+    public create(qusetionDto: AnswerDto){
+        return this.httpClient.post<any>(`${this.basesUrl}/answer`,qusetionDto);
     }
 }
