@@ -1,0 +1,47 @@
+div {
+  margin: 12px 10px;
+  border: 1px solid #80808036;
+
+  p { margin: 0; }
+}
+
+.sub-row {
+  border: 0; 
+  margin: 0;
+  
+  p {
+    font-weight: bold;
+    background: white;
+    padding: 10px;
+  }
+
+  .mat-table { 
+    background-color: inherit; 
+  }
+}
+
+
+th.myTable 
+{
+    padding-left: 1em;
+    padding-right: 1em;
+    background-color: gray;
+    color: white;
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  tr:hover{
+      background-color: yellow;
+  }
+  a.action, span.action{
+  padding: 1em;
+}
+
+  a.action:hover, span.action:hover{
+     font-weight: bolder;
+      color: red;
+  }
+

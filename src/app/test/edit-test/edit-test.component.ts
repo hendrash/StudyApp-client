@@ -44,7 +44,7 @@ private indexOfTest: number;
     if(this.router.url.indexOf('/edit')>0){
         this.mode='Edit';    
     }
-    if(this.mode==='Edit'){
+      if(this.mode==='Edit'){
       this.processForm();
     }
   }

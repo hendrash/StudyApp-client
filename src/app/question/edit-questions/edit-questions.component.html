@@ -1,0 +1,35 @@
+    <form [formGroup]="myForm"><div class="box"> 
+
+   <div> <header class="center">{{mode}} Question</header>
+    <p>question</p> <input type="text" placeholder="question?" required [formControl]="question">
+    <p>hint</p> <input type="text" placeholder="hint" required [formControl]="hint">
+    <br><br><br>
+    <button (click)="save()">Save</button></div> 
+    <div>
+       
+        <div formArrayName="pAnswer">
+            <h3 class="form-header pr-0">
+                <button (click)="addAnswer()">Add Answer</button>            
+            </h3> 
+            <h3 class="form-header pr-0">
+                <button (click)="remove()" >Remove</button>
+            </h3>
+            <div class="row w-100 d-flex justify-content-center align-items-center"
+            *ngFor="let prop of pAnswer.controls; let i = index"
+            [formGroupName]="i" 
+            >
+            
+        <div class="col">
+            <input type="text"
+             placeholder="answer" 
+             required 
+             formControlName="answer"/>
+        <textarea name="reason " formControlName="description" placeholder="Why is this answer correct" row=4 cols="10" ></textarea>
+            <mat-checkbox formControlName="correct">Correct?</mat-checkbox>
+        </div>
+        </div>
+        </div>
+        </div>    
+    
+</div>
+</form>

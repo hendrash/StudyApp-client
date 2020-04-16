@@ -10,7 +10,10 @@ import { UserComponent } from './home/user/user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditTestComponent } from './test/edit-test/edit-test.component';
 import { QuestionsComponent } from './question/questions/questions.component';
-
+import { AnswersComponent } from './answers/answers.component';
+import { EditQuestionsComponent } from './question/edit-questions/edit-questions.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,14 +21,18 @@ import { QuestionsComponent } from './question/questions/questions.component';
     TestListComponent,
     UserComponent,
     EditTestComponent,
-    QuestionsComponent
+    QuestionsComponent,
+    AnswersComponent,
+    EditQuestionsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     MatTableModule ,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatRadioModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
