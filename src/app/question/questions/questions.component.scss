@@ -33,7 +33,7 @@ th.myTable
 tr:nth-child(even) {
     background-color: #dddddd;
   }
-  tr:hover{
+  tr:hover:nth-child(odd){
       background-color: yellow;
   }
   a.action, span.action{
@@ -45,3 +45,18 @@ tr:nth-child(even) {
       color: red;
   }
 
+example-element-detail{
+  overflow: hidden;
+  display: flex;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+}
+// tr.example-element-row:not(.example-expanded-row):hover{
+//   background: whitesmoke;
+// }
