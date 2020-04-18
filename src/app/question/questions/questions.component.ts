@@ -22,7 +22,7 @@ export class QuestionsComponent implements OnInit {
   public dataSource: QuestionDto[];
   private testId:number;
   private userId: number;
-
+  public totalScore: number=0;
   expandedElement: AnswerDto | null;
   public displayedColumns=['question','hint','action'];
   public expanedColumnes=['answer']
@@ -42,8 +42,9 @@ export class QuestionsComponent implements OnInit {
 getQuestions(){
   this.questionHelper.loadQuestions(this.testId);
   this.questionHelper.getAll().subscribe(result=>{
+    result.forEach(t=>t.answer.forEach(t=>{t.isChecked=false}));
     this.dataSource=result;
-  });
+      });
 }
 
 remove(qId: number){
@@ -58,4 +59,24 @@ edit(questionId: number){
 create(){
   this.router.navigate(['test/'+this.userId+'/questions/'+this.testId+'/add']);
 }
+check(qId:number,aId:number){
+  this.dataSource.find(t=>t.questionId===qId).answer.find(t=>t.answerId===aId).isChecked=this.dataSource.find(t=>t.questionId===qId).answer.find(t=>t.answerId===aId).isChecked ? false: true
+}
+
+submit(qId:number){
+this.dataSource.find(t=>t.questionId===qId).isCorrect=this.dataSource.find(t=>t.questionId===qId).answer.find(t=>
+  t.isChecked!=t.correct)!=null?false:true;
+this.dataSource.find(t=>t.questionId===qId).displayAnswer=true
+this.getScore();
+}
+getScore(){
+  this.totalScore=0
+  this.dataSource.forEach(t=>{
+    if(t.isCorrect){
+      this.totalScore++;
+    }
+  })
+this.totalScore=this.totalScore/this.dataSource.length;
+}
+
 }

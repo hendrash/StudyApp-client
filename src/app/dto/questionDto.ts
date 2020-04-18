@@ -7,5 +7,6 @@ export interface QuestionDto{
     testId?: number;
     answer?: AnswerDto[];
     hint?: string;
-    
+    isCorrect?:Boolean;
+    displayAnswer?:Boolean;
 }

@@ -1,6 +1,17 @@
+div.myTable{
+  padding: 1em;
+
+}
+div.addQuestion {
+  padding: 1em;
+}
+header.total{
+font-size: 1.5em;
+font-weight: bold;
+}
+
 div {
   margin: 12px 10px;
-  border: 1px solid #80808036;
 
   p { margin: 0; }
 }
@@ -18,9 +29,8 @@ div {
   .mat-table { 
     background-color: inherit; 
   }
+
 }
-
-
 th.myTable 
 {
     padding-left: 1em;
@@ -56,6 +66,12 @@ table, th, td {
 }
 th, td {
   padding: 15px;
+}
+span.correct{
+  color: green;
+}
+span.incorrect{
+  color: red;
 }
 // tr.example-element-row:not(.example-expanded-row):hover{
 //   background: whitesmoke;

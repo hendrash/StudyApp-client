@@ -1,5 +1,5 @@
-<header>Welcome to your custom questions </header>
-<table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z2">
+<div class="myTable"><header class="total">Welcome to your custom questions </header>
+<table mat-table [dataSource]="dataSource" multiTemplateDataRows class="myTable">
     <ng-container matColumnDef="question">
         <th mat-header-cell *matHeaderCellDef class="myTable">Question?</th>
         <td mat-cell *matCellDef="let element">{{element.question}}</td>
@@ -30,8 +30,18 @@
         <td mat-cell *matCellDef="let element" [attr.colspan]="expanedColumnes.length">
             <div class="example-element-detail"
             [@detailExpand]="element==expandedElement ? 'expanded':'collapsed'"
-            *ngFor="let answer of element.answer">
-               <mat-checkbox></mat-checkbox>
+           > <div *ngFor="let answer of element.answer">
+            <input type="checkbox" (click)="check(element.questionId, answer.answerId)"/>
+           </div>
+             <span *ngIf="element.displayAnswer">
+               <span class="correct" *ngIf="element.isCorrect">
+                correct
+              </span>
+              <span class="incorrect" *ngIf="!element.isCorrect">
+                incorrect
+              </span>
+
+            </span> 
           </div>
         </td>   
       </ng-container>
@@ -39,11 +49,15 @@
         <td mat-cell *matCellDef="let element" [attr.colspan]="expanedColumnes.length">
             <div class="example-element-detail"
             [@detailExpand]="element==expandedElement ? 'expanded':'collapsed'">
-            <div *ngFor="let answer of element.answer">
+              <div *ngIf="element.displayAnswer"> 
+                <div *ngFor="let answer of element.answer" >
+                  <div *ngIf="answer.isChecked">
+                    {{answer.answer}}: {{answer.description}}
+                  </div>
 
+                </div>
             </div>
-            <button>submit</button>  
-            <!-- <mat-checkbox></mat-checkbox> -->
+            <button (click)="submit(element.questionId)">check</button>  
           </div>
         </td>   
        
@@ -58,4 +72,6 @@
     <tr mat-row *matRowDef="let row; columns: ['answer','correct','description']"
     class="example-detail-row"></tr>
 </table>
-<button type="button" (click)="create()">Add Question</button>
+<div class="addQuestion">
+<button type="button" (click)="create()" >Add Question</button></div>
+<header class="total">Current Total Score {{totalScore}}</header></div>
