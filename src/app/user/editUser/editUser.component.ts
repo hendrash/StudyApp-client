@@ -47,11 +47,11 @@ private processForm(){
 }
 createUserForm(){
   this.myForm= new FormGroup({
-   uname: new FormControl(null, Validators.required),
-   fname: new FormControl(null, Validators.required),
-   lname: new FormControl(null, Validators.required),
-   email: new FormControl(null, Validators.required),
-   password: new FormControl(null)
+   uname: new FormControl(null, [Validators.required, Validators.minLength(2)]),
+   fname: new FormControl(null, [Validators.required, Validators.minLength(2)]),
+   lname: new FormControl(null, [Validators.required, Validators.minLength(2)]),
+   email: new FormControl(null, [Validators.required,Validators.email, Validators.minLength(2)]),
+   password: new FormControl(null,[Validators.required, Validators.minLength(4)])
   });
 }
 
@@ -99,5 +99,8 @@ public initForm(){
   this.lname.setValue(this.currentUser.lastName);
   this.email.setValue(this.currentUser.email);
   this.password.setValue(this.currentUser.password);
+}
+back(){
+  this.router.navigate(['']);
 }
 }

@@ -4,7 +4,8 @@
     <p>question</p> <input type="text" placeholder="question?" required [formControl]="question">
     <p>hint</p> <input type="text" placeholder="hint" required [formControl]="hint">
     <br><br><br>
-    <button (click)="save()">Save</button></div> 
+    <button (click)="save()">Save</button>    <button (click)="back()">back</button></div> 
+
     <div>
        
         <div formArrayName="pAnswer">
@@ -22,7 +23,7 @@
              placeholder="answer" 
              required 
              formControlName="answer"/>
-        <textarea name="reason " formControlName="description" placeholder="Why is this answer correct" row=4 cols="10" ></textarea>
+        <textarea name="reason " formControlName="description" placeholder="Why is this the case?" row=7 cols="14" ></textarea>
             <mat-checkbox formControlName="correct">Correct?</mat-checkbox> 
             <h3 class="form-header pr-0">
                 <button (click)="remove(i)" >-</button>

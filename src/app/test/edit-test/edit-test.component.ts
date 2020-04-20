@@ -89,4 +89,7 @@ private indexOfTest: number;
   private initForm(){
     this.tname.setValue(this.currentTest.testName);
   }
+  back(){
+    this.router.navigate(['']);
+  }
 }

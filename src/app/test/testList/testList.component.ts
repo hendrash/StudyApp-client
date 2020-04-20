@@ -43,4 +43,7 @@ export class TestListComponent implements OnInit {
   create(){
     this.router.navigate(['test/'+this.userId+'/add']);
   }
+  back(){
+    this.router.navigate(['']);
+  }
 }

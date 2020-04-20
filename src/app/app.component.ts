@@ -13,5 +13,5 @@ import { Router } from '@angular/router';
 })
 
 export class AppComponent {
-  title= 'Personal study guide'
+  title= 'Personal Study Guide'
 }

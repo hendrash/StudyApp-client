@@ -60,7 +60,8 @@ create(){
   this.router.navigate(['test/'+this.userId+'/questions/'+this.testId+'/add']);
 }
 check(qId:number,aId:number){
-  this.dataSource.find(t=>t.questionId===qId).answer.find(t=>t.answerId===aId).isChecked=this.dataSource.find(t=>t.questionId===qId).answer.find(t=>t.answerId===aId).isChecked ? false: true
+  this.dataSource.find(t=>t.questionId===qId).answer.find(t=>t.answerId===aId).isChecked=!this.dataSource.find(t=>t.questionId===qId).answer.find(t=>t.answerId===aId).isChecked;
+  this.dataSource.find(t=>t.questionId===qId).displayAnswer=false;
 }
 
 submit(qId:number){
@@ -76,7 +77,10 @@ getScore(){
       this.totalScore++;
     }
   })
-this.totalScore=this.totalScore/this.dataSource.length;
+this.totalScore=this.totalScore/this.dataSource.length*100;
+}
+back(){
+  this.router.navigate(['test/'+this.userId]);
 }
 
 }

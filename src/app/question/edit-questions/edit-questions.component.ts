@@ -162,6 +162,9 @@ remove(index: number){
    }
 
 }
+back(){
+  this.router.navigate(['test/'+this.userId+'/questions/'+this.testId]);
+}
 
 
 }

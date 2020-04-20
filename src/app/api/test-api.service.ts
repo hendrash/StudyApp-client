@@ -11,7 +11,7 @@ import { HttpParams } from '@angular/common/http';
 export class TestApi extends BaseApi{
     public getAll(userId: number): Observable<TestDto[]>{
         let payload= new HttpParams;
-        payload= payload.append('userId',userId.toString())
+        payload= payload.append('userId',userId+"")
         return this.httpClient.get<TestDto[]>(`${this.basesUrl}/test/getAll`,{params: payload})
     }
 

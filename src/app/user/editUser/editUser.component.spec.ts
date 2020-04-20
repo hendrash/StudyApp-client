@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EditUser } from './editUser.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Routes } from '@angular/router';
 
 describe('CreateComponent', () => {
   let component: EditUser;
@@ -8,6 +12,7 @@ describe('CreateComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule, ReactiveFormsModule, RouterTestingModule.withRoutes(routes)],
       declarations: [ EditUser ]
     })
     .compileComponents();
@@ -22,4 +27,6 @@ describe('CreateComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+const routes: Routes=[
+  {path: 'edit/2', component: EditUser}]
 });
